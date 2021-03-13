@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Oceane&#39;s Blog</title>
+    <link>https://oyane806.github.io/</link>
+    <description>Recent content on Oceane&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 21 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://oyane806.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Systematic approach to improve your model</title>
+      <link>https://oyane806.github.io/ml-methodology/</link>
+      <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://oyane806.github.io/ml-methodology/</guid>
+      <description>This infographics is inspired by the book Machine learning yearning from Andrew Ng. This book is full of practical advice.
+Something that I find interesting is the shift that is occuring between the old machine learning practice and the new machine learning practice. In the old time, data scientists tried as much as possible to reduce the number of features used and the complexity of machine learning models to prevent overfitting.</description>
+    </item>
+    
+    <item>
+      <title>Deep learning in minutes!</title>
+      <link>https://oyane806.github.io/dl-in-minutes/</link>
+      <pubDate>Sun, 19 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://oyane806.github.io/dl-in-minutes/</guid>
+      <description>In this blog post I am trying to explain the basics of deep learning with a simple example and a few code snippets.
+A neural network is a stack of hidden layers. Each layer is composed of linear and non-linear functions. Non-linear functions are really important, they are the secret ingredient of deep learning. They allows the universal approximation theorem to work. This theorem says that you can always come up with a deep neural network that will approximate any complex relation between input and output.</description>
+    </item>
+    
+    <item>
+      <title>Quick rules to tune a neural net</title>
+      <link>https://oyane806.github.io/nn-tuning/</link>
+      <pubDate>Mon, 06 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://oyane806.github.io/nn-tuning/</guid>
+      <description>I am listing here the rules I am using to tune a neural network.
+1. Very high valid_loss Total time: 00:13 epoch train_loss valid_loss error_rate 1 12.220007 1144.000000 0.765957 (00:13) valid_loss is usually less than 1. When it is very big, it means that the learning rate is too high.
+2. train_loss bigger than valid_loss Total time: 00:14 epoch train_loss valid_loss error_rate 1 0.602823 0.119616 0.049645 (00:14) train_loss needs to be smaller than valid_loss.</description>
+    </item>
+    
+    <item>
+      <title>Checklist fastai ml</title>
+      <link>https://oyane806.github.io/checklist-fastai-ml/</link>
+      <pubDate>Sat, 14 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://oyane806.github.io/checklist-fastai-ml/</guid>
+      <description>I have completed the first part of fast.ai machine learning course! I like that this course is opinionated. Jeremy Howards teaches about two machine learning techniques: random forests and neural networks. He is not trying to go through all the main machine learning algorithms superficially. Those two techniques, well mastered should be able to cover more than 80% of the industry needs. Here is the Pareto rule! I like that he is giving a lot of tips and tricks as well.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://oyane806.github.io/about/</link>
+      <pubDate>Tue, 26 Mar 2019 08:47:11 +0100</pubDate>
+      
+      <guid>https://oyane806.github.io/about/</guid>
+      <description>Hi,
+I am Oceane. This is my simple blog where I am sharing a lot of what I am doing: data analytics, data engineering, machine learning, deep learning, finance, investment and trading! That&amp;rsquo;s a lot of data!
+I hope that you will find something useful for you ☺️ !
+Stay tuned!
+Email me at oceane.velon@gmail.com</description>
+    </item>
+    
+  </channel>
+</rss>

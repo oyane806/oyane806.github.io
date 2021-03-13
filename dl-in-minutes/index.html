@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.81.0" />
+
+
+<title>Deep learning in minutes! - Oceane&#39;s Blog</title>
+<meta property="og:title" content="Deep learning in minutes! - Oceane&#39;s Blog">
+
+
+  <link href='https://oyane806.github.io/favicon.png' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+<link rel="icon" href="https://oyane806.github.ioimages/favicon.png" type="image/x-icon"/>
+<link rel="stylesheet" href="https://oyane806.github.iocss/main.css" media="all">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400|Lato:400,400italic,700">
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="https://oyane806.github.io" class="nav-logo">
+    <img src="https://oyane806.github.ioimages/Icons-4.png" width="50"
+      height="50" alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/oyane806" target="_blank">GitHub</a></li>
+    
+    <li><a href="https://www.linkedin.com/in/oceanevelon/" target="_blank">Linkedin</a></li>
+    
+  </ul>
+</nav>
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">6 min read</span>
+    
+
+    <h1 class="article-title">Deep learning in minutes!</h1>
+
+    
+    <span class="article-date">January 19, 2020</span>
+    
+
+    <div class="article-content">
+      <p>In this blog post I am trying to explain the basics of deep learning with a simple example and a few code snippets.</p>
+<p>A neural network is a stack of hidden layers. Each layer is composed of linear and non-linear functions. <strong>Non-linear functions are really important, they are the secret ingredient of deep learning.</strong> They allows the universal approximation theorem to work. This theorem says that you can always come up with a deep neural network that will approximate any complex relation between input and output.</p>
+<p><strong>How do deep neural networks work?</strong></p>
+<p>We give the neural network input data and the expected output data. Data will go through different layers of linear and non-linear functions and hyper-parameters are learnt to give the right output.</p>
+<p>The early layers focus on small features, for example in computer vision, corners and borders ; the late layers are more general, in computer vision they are able to distinguish between cats and dogs because they group an ensemble of features together such as the fur texture, the number of eyes, the shape of the ears.</p>
+<p>I am going to focus here on how the neural network learns the hyper-parameters. To make it easier to understand, I will use a regression example. I will generate a set of points following a regression rule. I will then use a gradient descent technique to re-discover the regression rule.</p>
+<hr>
+<p>To begin, I am generating 50 data points around an affine function y = 3 x + 8.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">lin</span>(a,b,x): <span style="color:#66d9ef">return</span> a<span style="color:#f92672">*</span>x<span style="color:#f92672">+</span>b
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gen_fake_data</span>(n, a, b):
+    x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>uniform(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>,n) 
+    y <span style="color:#f92672">=</span> lin(a,b,x) <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.1</span> <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">3</span>,n)
+    <span style="color:#66d9ef">return</span> x, y
+
+x, y <span style="color:#f92672">=</span> gen_fake_data(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">3.</span>, <span style="color:#ae81ff">8.</span>)
+</code></pre></div><p><img src="/images/generate_points.png#center" alt="Generate data"></p>
+<p>In this graph, the orange points are the 50 points generated previously, in red is the line that fits the points the best. My goal is to guess the parameters of this line a and b.</p>
+<p>If I begin with a and b equal 0, I get the graph below. I can see that I am quite far from fitting the points!</p>
+<p><img src="/images/first_estimate.png#center" alt="First estimate"></p>
+<p>We want the line to fit the points. For this, we calculate the error loss. The error loss gives us an indication of how bad we are.</p>
+<p>The mean square error is a good indicator. It calculates the distance between each orange point and the predicted red line. This distance is squared to take into account differences from points below and above the predicted line, otherwise, differences from points below the line would cancel differences from points above the line. Then the average is taken.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">mse_loss</span>(a, b, x, y): <span style="color:#66d9ef">return</span> mse(lin(a,b,x), y)
+
+mse(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, y)
+</code></pre></div><p>I tried (a, b) = (0, 0) and I found an error loss of 92.67. (a, b) = (1, 1) gives a better loss 65.36.</p>
+<p>I can plot the error loss for each combination (a, b), this function is called the loss function. I assume here that a = b, for the explanation, otherwise, the loss function would be in a 3 dimension space.</p>
+<p><img src="/images/loss_function.png#center" alt="Loss function"></p>
+<p>I can read on the graph that the best parameter value is 6 at the lowest point of the loss function. I can quickly check parameters equal 6 on my 50 points below. This is better than our first attempt.</p>
+<p><img src="/images/best_estimate.png#center" alt="Best estimate"></p>
+<p>☝️ Instead of trying random values that minimize the loss function, we can use the <strong>gradient descent algorithm</strong>.</p>
+<p>Gradient descent is an algorithm that minimizes functions. Given a function defined by a set of parameters, gradient descent starts with an initial set of parameter values and iteratively moves toward a set of parameter values that minimize the function. This iterative minimization is achieved by taking steps in the negative direction of the function gradient.</p>
+<p>Parameters are updated using the gradient and a learning rate:<br>
+<strong>a = a - learning_rate * (gradient of the loss function from a)<br>
+b = b - learning_rate * (gradient of the loss function from b)</strong></p>
+<p>When the gradient is negative it means that we are riding a negative slope of the loss function, we need to keep on going on this direction.</p>
+<p>When the gradient is poitive, it means that we are riding a positive slope of the loss function, so we need to go backwards.</p>
+<p><img src="/images/loss_function2.png#center" alt="Loss function 2"></p>
+<p>There are different types of gradient descent faster or more reliable, but this is another topic!</p>
+<p>How far we are moving at each iteration is defined by the <strong>learning rate</strong>. It is really important to choose the right learning rate. If the learning rate is too small, it can take forever for the algorithm to reach the minimum. If the learning rate is too big, the algorithm can never find the minimum and oscillate between 2 positions.</p>
+<p><img src="https://miro.medium.com/proxy/1*Q-2Wh0Xcy6fsGkbPFJvMhQ.gif#center" alt="Learning rate"></p>
+<p>There are different ways to choose the learning rate, a good practice is to increase and then progressively decrease the learning rate, this technique is called cyclical learning rate.</p>
+<p>Now, that we have understood the logic, let&rsquo;s code! I am using the pytorch library here, because it is keeping track of the gradients.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> torch
+
+<span style="color:#75715e"># Wrap x and y in Variables.</span>
+x,y <span style="color:#f92672">=</span> V(x),V(y)
+
+<span style="color:#75715e"># Create random weights a and b, and wrap them in Variables.</span>
+a <span style="color:#f92672">=</span> V(np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randn(<span style="color:#ae81ff">1</span>), requires_grad<span style="color:#f92672">=</span>True)
+b <span style="color:#f92672">=</span> V(np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randn(<span style="color:#ae81ff">1</span>), requires_grad<span style="color:#f92672">=</span>True)
+
+<span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">50</span>):
+    <span style="color:#75715e"># Forward pass: compute predicted y using operations on Variables.</span>
+    loss <span style="color:#f92672">=</span> mse_loss(a,b,x,y)
+    <span style="color:#66d9ef">if</span> t <span style="color:#f92672">%</span> <span style="color:#ae81ff">50</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>: <span style="color:#66d9ef">print</span>(loss<span style="color:#f92672">.</span>data[<span style="color:#ae81ff">0</span>])
+    
+    <span style="color:#75715e"># Computes the gradient of loss with respect to all Variables with requires_grad=True.</span>
+    <span style="color:#75715e"># After this call a.grad and b.grad will be Variables holding the gradient</span>
+    <span style="color:#75715e"># of the loss with respect to a and b respectively.</span>
+    loss<span style="color:#f92672">.</span>backward()
+    
+    <span style="color:#75715e"># Update a and b using gradient descent; a.data and b.data are Tensors,</span>
+    <span style="color:#75715e"># a.grad and b.grad are Variables and a.grad.data and b.grad.data are Tensors.</span>
+    a<span style="color:#f92672">.</span>data <span style="color:#f92672">-=</span> learning_rate <span style="color:#f92672">*</span> a<span style="color:#f92672">.</span>grad<span style="color:#f92672">.</span>data
+    b<span style="color:#f92672">.</span>data <span style="color:#f92672">-=</span> learning_rate <span style="color:#f92672">*</span> b<span style="color:#f92672">.</span>grad<span style="color:#f92672">.</span>data
+    
+    <span style="color:#75715e"># Zero the gradients.</span>
+    a<span style="color:#f92672">.</span>grad<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>zero_()
+    b<span style="color:#f92672">.</span>grad<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>zero_()
+</code></pre></div><p>This algorithm find parameters very close to 3 and 8! 🎉</p>
+<p>That is it! We covered one of the most fundamental piece of deep learning! In deep learning, instead of having just a regression function, on top of it, there is a non-linear function added. However, the methodology is the same to find the best hyper-parameters.</p>
+<p><strong>What is the role of a deep learning practitionner?</strong></p>
+<p>A deep learning practitionner need to think about the best architecture (number of layers, type of activation functions) to use for his specific problem.</p>
+<p>During the training phase, he needs to make sure that the model is learning well by adjusting the learning rate, the number of iterations through the entire dataset (epochs) and the optimization techniques.</p>
+<p>He checks as well if the model generalizes well, if it becomes too specific to the training dataset, it is called overfitting. Regularization techniques are used to prevent overfitting.</p>
+<hr>
+<p>I hope that this blog post is clear enough. Let me know if you have any suggestions to improve this article.</p>
+
+    </div>
+  </article>
+
+  
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="https://oyane806.github.ioimages/hugo-logo.png" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
+

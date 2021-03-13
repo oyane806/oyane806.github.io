@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.81.0" />
+
+
+<title>Quick rules to tune a neural net - Oceane&#39;s Blog</title>
+<meta property="og:title" content="Quick rules to tune a neural net - Oceane&#39;s Blog">
+
+
+  <link href='https://oyane806.github.io/favicon.png' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+<link rel="icon" href="https://oyane806.github.ioimages/favicon.png" type="image/x-icon"/>
+<link rel="stylesheet" href="https://oyane806.github.iocss/main.css" media="all">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400|Lato:400,400italic,700">
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="https://oyane806.github.io" class="nav-logo">
+    <img src="https://oyane806.github.ioimages/Icons-4.png" width="50"
+      height="50" alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/oyane806" target="_blank">GitHub</a></li>
+    
+    <li><a href="https://www.linkedin.com/in/oceanevelon/" target="_blank">Linkedin</a></li>
+    
+  </ul>
+</nav>
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">2 min read</span>
+    
+
+    <h1 class="article-title">Quick rules to tune a neural net</h1>
+
+    
+    <span class="article-date">January 6, 2020</span>
+    
+
+    <div class="article-content">
+      <p>I am listing here the rules I am using to tune a neural network.</p>
+<h3 id="1-very-high-valid_loss">1. Very high <code>valid_loss</code></h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Total time: 00:13
+epoch  train_loss  valid_loss  error_rate       
+<span style="color:#ae81ff">1</span>      12.220007   1144.000000  0.765957    <span style="color:#f92672">(</span>00:13<span style="color:#f92672">)</span>
+</code></pre></div><p><code>valid_loss</code> is usually less than 1. When it is very big, it means that the learning rate is too high.</p>
+<h3 id="2-train_loss-bigger-than-valid_loss">2. <code>train_loss</code> bigger than <code>valid_loss</code></h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Total time: 00:14
+epoch  train_loss  valid_loss  error_rate
+<span style="color:#ae81ff">1</span>      0.602823    0.119616    0.049645    <span style="color:#f92672">(</span>00:14<span style="color:#f92672">)</span>
+</code></pre></div><p><code>train_loss</code> needs to be smaller than <code>valid_loss</code>. Otherwise, it means that we are not learning enough from the training set. To reach this point where the <code>train_loss</code> is smaller than the <code>valid_loss</code> we can increase the number of epochs and/or increase the learning rate.</p>
+<h3 id="3-error_rate-improves-slowly">3. <code>error_rate</code> improves slowly</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Total time: 01:07
+epoch  train_loss  valid_loss  error_rate
+<span style="color:#ae81ff">1</span>      1.349151    1.062807    0.609929    <span style="color:#f92672">(</span>00:13<span style="color:#f92672">)</span>
+<span style="color:#ae81ff">2</span>      1.373262    1.045115    0.546099    <span style="color:#f92672">(</span>00:13<span style="color:#f92672">)</span>
+</code></pre></div><p>When the <code>error_rate</code> improves with the number of epochs but very slowly, the learning rate needs to be increased.</p>
+<h3 id="4-error_rate-gets-worse-after-a-while">4. <code>error_rate</code> gets worse after a while</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Total time: 06:39
+epoch  train_loss  valid_loss  error_rate
+<span style="color:#ae81ff">1</span>      1.513021    1.041628    0.507326    <span style="color:#f92672">(</span>00:13<span style="color:#f92672">)</span>
+<span style="color:#ae81ff">2</span>      1.290093    0.994758    0.443223    <span style="color:#f92672">(</span>00:09<span style="color:#f92672">)</span>
+<span style="color:#ae81ff">3</span>      1.185764    0.936145    0.410256    <span style="color:#f92672">(</span>00:09<span style="color:#f92672">)</span>
+<span style="color:#ae81ff">4</span>      1.117229    0.838402    0.322344    <span style="color:#f92672">(</span>00:09<span style="color:#f92672">)</span>
+<span style="color:#ae81ff">5</span>      1.022635    0.734872    0.252747    <span style="color:#f92672">(</span>00:09<span style="color:#f92672">)</span>
+<span style="color:#ae81ff">6</span>      0.951374    0.627288    0.192308    <span style="color:#f92672">(</span>00:10<span style="color:#f92672">)</span>
+<span style="color:#ae81ff">7</span>      0.916111    0.558621    0.184982    <span style="color:#f92672">(</span>00:09<span style="color:#f92672">)</span>
+<span style="color:#ae81ff">8</span>      0.839068    0.503755    0.177656    <span style="color:#f92672">(</span>00:09<span style="color:#f92672">)</span>
+<span style="color:#ae81ff">9</span>      0.749610    0.433475    0.144689    <span style="color:#f92672">(</span>00:09<span style="color:#f92672">)</span>
+<span style="color:#ae81ff">10</span>     0.678583    0.367560    0.124542    <span style="color:#f92672">(</span>00:09<span style="color:#f92672">)</span>
+<span style="color:#ae81ff">11</span>     0.615280    0.327029    0.100733    <span style="color:#f92672">(</span>00:10<span style="color:#f92672">)</span>
+<span style="color:#ae81ff">12</span>     0.558776    0.298989    0.095238    <span style="color:#f92672">(</span>00:09<span style="color:#f92672">)</span>
+<span style="color:#ae81ff">13</span>     0.518109    0.266998    0.084249    <span style="color:#f92672">(</span>00:09<span style="color:#f92672">)</span>
+<span style="color:#ae81ff">14</span>     0.476290    0.257858    0.084249    <span style="color:#f92672">(</span>00:09<span style="color:#f92672">)</span>
+<span style="color:#ae81ff">15</span>     0.436865    0.227299    0.067766    <span style="color:#f92672">(</span>00:09<span style="color:#f92672">)</span>
+<span style="color:#ae81ff">16</span>     0.457189    0.236593    0.078755    <span style="color:#f92672">(</span>00:10<span style="color:#f92672">)</span>
+<span style="color:#ae81ff">17</span>     0.420905    0.240185    0.080586    <span style="color:#f92672">(</span>00:10<span style="color:#f92672">)</span>
+<span style="color:#ae81ff">18</span>     0.395686    0.255465    0.082418    <span style="color:#f92672">(</span>00:09<span style="color:#f92672">)</span>
+<span style="color:#ae81ff">19</span>     0.373232    0.263469    0.080586    <span style="color:#f92672">(</span>00:09<span style="color:#f92672">)</span>
+</code></pre></div><p>When the <code>error_rate</code> improves for a while and then starts getting worse again, it can be a sign of overfitting. In this case, you can either use less epochs, either use more regularization techniques.</p>
+
+    </div>
+  </article>
+
+  
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="https://oyane806.github.ioimages/hugo-logo.png" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
+
