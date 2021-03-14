@@ -6,7 +6,18 @@
     <description>Recent content on Oceane&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 21 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tools for blogging - less is more</title>
+      <link>/blogging/</link>
+      <pubDate>Sat, 13 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/blogging/</guid>
+      <description>Blogging is old-school now, with Youtube channels, Instagram stories, podcasts, live streaming (Twitch, Clubhouse) and newsletters (hello Substack!). But I like retro things&amp;hellip;
+For my blog revival, I reviewed a few different tools. A lot of solutions are available, especially iecause I like DIY and because I am a developper, I have a lot of solutions available.
+Today, the total cost to get my blog up and running is free. I would just need to pay for a domain name and I found one super cheap at $3 per month because it has a strange extension: .</description>
+    </item>
+    
     <item>
       <title>Systematic approach to improve your model</title>
       <link>/ml-methodology/</link>
