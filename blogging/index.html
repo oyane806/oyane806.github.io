@@ -59,12 +59,12 @@
     
 
     <div class="article-content">
-      <p>Blogging is old-school now, with Youtube channels, Instagram stories, podcasts, live streaming (Twitch, Clubhouse) and newsletters (hello Substack!). But I like retro things&hellip;</p>
-<p>For my blog revival, I reviewed a few different tools. A lot of solutions are available, especially iecause I like DIY and because I am a developper, I have a lot of solutions available.</p>
-<p>Today, the total cost to get my blog up and running is free. I would just need to pay for a domain name and I found one super cheap at $3 per month because it has a strange extension: .co.</p>
-<p>To create a blog you need to choose 3 things:</p>
+      <p>Blogging is old-school now! You can create channels on Youtube, Instagram stories, podcasts, you can live stream on Twitch, Clubhouse, you can even write paid newsletters on Substack! But&hellip; I like retro things&hellip;</p>
+<p>For my blog revival, I explored different tools to create and maintain a blog. Many solutions are available for developers and DIY persons.</p>
+<p>Today, my total cost to get my blog up and running is free. I just need to pay for a domain name and I found one super cheap at $3 per month because it has a strange extension: .co.</p>
+<p>To start a blog you need 3 things:</p>
 <ul>
-<li>a domain name (namecheap.com, godaddy.com)</li>
+<li>a domain name (namecheap.com, domain.com, godaddy.com)</li>
 <li>a host: where you store your website (Github pages, AWS, Notion, Ghost)</li>
 <li>a technology: how you build your pages (Hugo, Jekyll, no-code)</li>
 </ul>
@@ -75,37 +75,34 @@
 <li>No hidden advertisement.</li>
 </ul>
 <h3 id="no-code-with-notion">No code with Notion</h3>
-<p>Without any hesitations I would recommend to people with no code experience to think about using Notion for their blogging platform.
-Notion offers a no code solution to publish webpages. For $5 per site per month, you can be up and running and you can use your own domain name.
-I think that this is a great way to start so you can focus on creating quality content regularly.</p>
+<p>Without any hesitations, I would recommend to people with no code experience to consider Notion for their blogging platform.</p>
+<p>Notion offers a no-code solution to publish webpages. For $5 per site per month, you can get your blog on your own domain name. This is a great way to start and you can focus on creating quality content regularly.</p>
 <p>A minimalist personal website: <a href="https://mariohayashi.com">https://mariohayashi.com</a><br>
 Another one: <a href="https://jodieloi.com">https://jodieloi.com</a></p>
 <p>Total monthly cost of Notion: $4 (best case) for the domain name + $5 for Notion = <strong>$9 per month</strong></p>
 <h3 id="no-code-with-ghost">No code with Ghost</h3>
-<p>Ghost is THE alternative to Wordpress: everything is better! It is lightning fast and safe. The integrated interface is great to manage content (CMS).</p>
-<p>They are offering new ways to monetize content for serious bloggers: articles behind a paywall, paid newsletters.</p>
-<p>I like that Ghost is a non-profit and that they are trying to change the way we create and consume content. I like the genuine relationship that can be build between the content creator and the reader. The publisher can focus on creating great content, there is no need to work on trying to monetize content by looking for affiliation, etc. The reader can focus on the content. He does not need to read between lines and be careful about hidden affiliations.</p>
+<p>Ghost is THE alternative to WordPress: everything is better! It is lightning fast and safe. The integrated interface is great to manage content (CMS).</p>
+<p>Ghost is a non-profit and they are trying to change the way we create and consume content. They are offering new ways to monetize content for serious bloggers: articles behind a paywall and paid newsletters. Writers can focus on creating content while readers can enjoy genuine content without hidden advertisements.</p>
 <p>Total monthly cost of Ghost (no code): $4 for the domain name + $29 per month but there is no percentage taken on the paid subscriptions = <strong>$33 per month</strong></p>
-<p>For developers, there is an open-source version of Ghost. You still need to find a CDN to host your static website. DigitalOcean has a pre-built ghost image set up that is working well for $5 per month. AWS Lightsail is another solution for $3.5 per month.</p>
+<p>Ghost is open-source, so developers can use it on an external CDN. DigitalOcean has a pre-built ghost image set up that is working well for $5 per month and the simplest version of AWS Lightsail costs around $3.5 per month.</p>
 <p>Total monthly cost of Ghost (developer edition): $4 for the domain name + around $4 for hosting = <strong>$8 per month</strong></p>
 <h3 id="hugo-for-developers">Hugo (for developers)</h3>
-<p>Hugo is a static website generator. This is the tool that I am using for this blog. I like that it is light and minimalist.
-I host my website on Github pages. It is free as well but there are some traffic limitations, so if my blog is too successful I would need to migrate my blog to AWS for example.</p>
+<p>Hugo is the static website generator I used to create this blog. It is very light and minimalist.</p>
+<p>I host my website on Github pages for free. Traffic is limited, so if my blog is too successful I would need to migrate my blog to AWS for example.</p>
 <p>Total monthly cost of Hugo (developer edition): <strong>$4 per month</strong> for the domain name</p>
-<p>Here is the ressource I used to set up my website:
-<a href="https://www.mytechramblings.com/posts/create-a-website-with-hugo-and-gh/">https://www.mytechramblings.com/posts/create-a-website-with-hugo-and-gh/</a></p>
-<p>I use the following commands to publish my posts and then it is live!</p>
+<p>Here is the ressource I used to set up my website: <a href="https://www.mytechramblings.com/posts/create-a-website-with-hugo-and-gh/">https://www.mytechramblings.com/posts/create-a-website-with-hugo-and-gh/</a></p>
+<p>Every time I want to update my blog, I run the following commands:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo --theme lithium
 cd public
 git add *
 git commit -m <span style="color:#e6db74">&#39;Add a new post&#39;</span>
 git push -u origin master
 </code></pre></div><h3 id="jekyll-for-developers">Jekyll (for developers)</h3>
-<p>Jekyll is very similar to Hugo, it is a static website generator and it is free. It is very well integrated with Github pages, so updating your website once everything is set up is a breeze!</p>
-<p>However I decided to move from Jekyll to Hugo for non-rational reasons 👸: Hugo seems lighter, cleaner and I found a theme in Hugo that I really like.</p>
+<p>Jekyll is very similar to Hugo, it is a free static website generator. Its main advantage is its integration with Github pages.</p>
+<p>I decided to move from Jekyll to Hugo for non-rational reasons 👸: Hugo seems lighter, cleaner and I found a theme in Hugo that I really like.</p>
 <p>Total monthly cost of Jekyll (developer edition): <strong>$4 per month</strong> for the domain name</p>
 <hr>
-<p>I hope that you found this quick post interesting. When I did my research, I was surprised to find out that a lot of websites still recommend very old solutions! Of course, I have a lot of bias towards minimal, clean solution for blogging and I like DIY! So keep that in mind when you read my post 💆‍♀️ !</p>
+<p>I hope that this post will give you new ideas. When I did my research, I was surprised to read a lot of recommendations for outdated solutions! Of course, I have a lot of bias towards minimal, clean, DIY solutions for blogging, so keep that in mind when you read my post 💆‍♀️!</p>
 
     </div>
   </article>
