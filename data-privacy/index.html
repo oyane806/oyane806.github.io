@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.81.0" />
+
+
+<title>How can Analytics Engineers protect customer data? - Oceane&#39;s Blog</title>
+<meta property="og:title" content="How can Analytics Engineers protect customer data? - Oceane&#39;s Blog">
+
+
+  <link href='/favicon.png' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+<link rel="icon" href="/images/favicon.png" type="image/x-icon"/>
+<link rel="stylesheet" href="/css/main.css" media="all">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400|Lato:400,400italic,700">
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Icons-4.png" width="50"
+      height="50" alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/oyane806" target="_blank">GitHub</a></li>
+    
+    <li><a href="https://www.linkedin.com/in/oceanevelon" target="_blank">Linkedin</a></li>
+    
+  </ul>
+</nav>
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">10 min read</span>
+    
+
+    <h1 class="article-title">How can Analytics Engineers protect customer data?</h1>
+
+    
+    <span class="article-date">May 13, 2023</span>
+    
+
+    <div class="article-content">
+      <p>In today&rsquo;s increasingly digital world, customer privacy has become a critical concern for businesses of all sizes. With the rise of data breaches, identity theft, and online tracking, customers are more aware than ever of the importance of protecting their personal information. As analytics engineers, we play a key role in ensuring that our companies are handling customer data responsibly and ethically.</p>
+<blockquote>
+<p>It is new-thinking. She says anonymity is the new celebrity. She says the mark of new cool is no hits for your name. No hits is the mark of how deeply infamous you are, because true freedom comes from being unknown.</p>
+<p>&ndash; Ruth Ozeki, <em>A Tale for the Time-being</em></p>
+</blockquote>
+<p>The potential consequences of not properly protecting customer data can be severe. In addition to legal and financial penalties, data breaches can also damage a company&rsquo;s reputation and erode customer trust. In this article, we&rsquo;ll explore some best practices for protecting customer privacy in analytics engineering, and offer tips and strategies for ensuring that your company is handling customer data responsibly.</p>
+<p><em>Note: The way companies collect and manage customer data can vary depending on the type of customer they serve. In this article, we&rsquo;ll focus specifically on data privacy for B2C customers.</em></p>
+<p><em>Note 2: When it comes to content companies like note-taking or messaging apps, privacy policy is essential. For the purposes of this article, we&rsquo;ll be focusing on a more specific aspect of data privacy: how companies collect and manage customer data for analytics and operations. Our focus here is on how companies handle customer data outside of the product itself.</em></p>
+<div class="toc">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-do-analytics-engineers-need-to-know-about-gdpr-and-ccpa-privacy-regulations">What do analytics engineers need to know about GDPR and CCPA privacy regulations?</a></li>
+    <li><a href="#sensitive-data-identifying-and-protecting-your-customers-information">Sensitive data: identifying and protecting your customers' information</a>
+      <ul>
+        <li><a href="#website-data-location-device-ip-address-and-pagesvisited">Website data: location, device, IP address, and pages visited</a></li>
+        <li><a href="#sign-up-data-personally-identifiable-information-pii">Sign-up data: personally identifiable information (PII)</a></li>
+        <li><a href="#app-usage-data-user-behavior-analytics">App usage data: user behavior analytics</a></li>
+        <li><a href="#post-purchase-data-amount-spent-and-billing-information">Post-purchase data: amount spent and billing information</a></li>
+      </ul>
+    </li>
+    <li><a href="#essential-practices-and-strategies-for-protecting-customerprivacy">Essential practices and strategies for protecting customer privacy</a>
+      <ul>
+        <li><a href="#minimize-the-collection-of-sensitive-data">Minimize the collection of sensitive data</a></li>
+        <li><a href="#anonymize-or-pseudonymize-data-to-protect-customerprivacy">Anonymize or pseudonymize data to protect customer privacy</a></li>
+        <li><a href="#implement-access-controls-to-limit-who-can-view-and-handle-sensitive-data">Implement access controls to limit who can view and handle sensitive data</a></li>
+        <li><a href="#be-mindful-about-the-data-shared-with-3rd-partytools">Be mindful about the data shared with 3rd party tools</a></li>
+      </ul>
+    </li>
+    <li><a href="#closing-thoughts">Closing thoughts</a></li>
+  </ul>
+</nav>
+</div>
+<hr>
+<h2 id="what-do-analytics-engineers-need-to-know-about-gdpr-and-ccpa-privacy-regulations">What do analytics engineers need to know about GDPR and CCPA privacy regulations?</h2>
+<p>You&rsquo;ve likely noticed an increasing number of websites requesting your permission for cookie tracking. This trend is a result of new regulations, such as the European General Data Protection Regulation (GDPR) and the California Consumer Privacy Act (CCPA), which were enacted in 2018 and 2020 respectively. These regulations require companies to obtain explicit consent from individuals before collecting and processing their personal data, and put strict requirements in place to protect that data.</p>
+<p>Here are some of the key requirements of GDPR and CCPA:</p>
+<p><strong>GDPR:</strong></p>
+<ul>
+<li>Individuals must give explicit consent before their personal data can be collected and processed.</li>
+<li>Organizations must implement measures to safeguard personal data, such as encryption and access controls.</li>
+<li>Individuals have the right to access, modify, and delete their personal data.</li>
+<li>Organizations must report data breaches within 72 hours of becoming aware of them.</li>
+</ul>
+<p><strong>CCPA:</strong></p>
+<ul>
+<li>Companies must disclose what personal information they collect, and why they collect it.</li>
+<li>California residents have the right to opt-out of the sale of their personal data.</li>
+<li>Companies must provide two or more methods for individuals to submit requests regarding their personal data.</li>
+<li>Organizations must provide training to employees who handle personal data.</li>
+</ul>
+<p>As an analytics engineer, understanding and complying with these regulations is crucial in protecting sensitive customer data. In the upcoming section, we&rsquo;ll examine in detail which types of customer data are deemed sensitive and the reasons why they require special attention to ensure privacy protection.</p>
+<h2 id="sensitive-data-identifying-and-protecting-your-customers-information">Sensitive data: identifying and protecting your customers' information</h2>
+<p>In today&rsquo;s digital age, companies gather customer data at various touchpoints along the customer journey, including website visits, sign-ups, app usage, email interactions, and purchases.</p>
+<h3 id="website-data-location-device-ip-address-and-pagesvisited">Website data: location, device, IP address, and pages visited</h3>
+<p>As customers interact with a company&rsquo;s website, data is collected that can provide insights into their interests and behavior. For instance, knowing a customer&rsquo;s location can help display the appropriate language on the website or optimize marketing campaigns based on geographic regions. However, location, device, and IP address data could be used to track a customer&rsquo;s location, which can be concerning in sensitive countries where surveillance is prevalent.</p>
+<blockquote>
+<p>Up to 87% of the U.S. population can be identified using only their 5-digit zip code, gender, and date of birth.</p>
+</blockquote>
+<h3 id="sign-up-data-personally-identifiable-information-pii">Sign-up data: personally identifiable information (PII)</h3>
+<p>Collecting personal information is helpful for providing a hyper-customized service and improving the overall user experience. Still, it&rsquo;s crucial to consider the potential risks associated with the collection and storage of personal data. Personally identifiable information (PII) is sensitive information that can be used for identity theft, fraud, or other malicious purposes. Examples of PII include name, address, email address, phone number, date of birth, IP address, credit card or bank account number, health information, and employment information. Other sensitive information, such as political orientation, gender, race, ethnicity, religion, and sexual orientation, could be used for unlawful and unethical purposes.</p>
+<p>A recent study showed that up to 87% of the U.S. population can be identified using only their 5-digit zip code, gender, and date of birth. According to a report by Risk Based Security, there were 3,932 publicly reported data breaches in the first six months of 2020 alone, which represents a 54% increase compared to the same period in 2019. The report also states that more than 27 billion records were exposed in those breaches.</p>
+<h3 id="app-usage-data-user-behavior-analytics">App usage data: user behavior analytics</h3>
+<p>A large portion of the data that companies gather pertains to user behavior within their applications. Such data is typically used for product analytics, enabling the product team to identify how users are utilizing the app and ways to enhance it. Although this data is non-PII, it must still be safeguarded, as it has the potential to expose personal matters, such as private health or financial information, and reveal sensitive or unhealthy behaviors.</p>
+<h3 id="post-purchase-data-amount-spent-and-billing-information">Post-purchase data: amount spent and billing information</h3>
+<p>Amount spent and billing information can be sensitive because they reveal a customer&rsquo;s financial situation, purchasing habits, and potentially even their location. This data can be valuable to companies for marketing and sales purposes, as it can help build a profile of a customer&rsquo;s spending patterns and lifestyle. However, if this information falls into the wrong hands, it could lead to fraud, identity theft, or overselling from other companies.</p>
+<p>Overall, safeguarding customer data is crucial to building trust and maintaining a positive reputation. Companies should consider implementing strong data protection policies and procedures to minimize the risks of data breaches and cyber attacks.</p>
+<h2 id="essential-practices-and-strategies-for-protecting-customerprivacy">Essential practices and strategies for protecting customer privacy</h2>
+<h3 id="minimize-the-collection-of-sensitive-data">Minimize the collection of sensitive data</h3>
+<p>One of the best practices for data privacy is to collect only the minimum amount of information necessary to achieve the intended purpose. This means questioning whether every piece of data collected is truly necessary, and avoiding collecting any unnecessary data. For example, do we really need to store the exact location of our customers, or is a general region or country enough? It&rsquo;s important to avoid asking for overly personal information such as date of birth, social security numbers, or other types of PII, unless it is absolutely necessary for the intended purpose. By following this principle, companies can minimize the amount of sensitive information they hold, and reduce the risk of data breaches or misuse of personal information.</p>
+<h3 id="anonymize-or-pseudonymize-data-to-protect-customerprivacy">Anonymize or pseudonymize data to protect customer privacy</h3>
+<p>Anonymizing or pseudonymizing data can be an effective way to protect customer privacy while still allowing companies to use the data for analysis and insights. Anonymizing data involves removing any identifying information, such as names, addresses, and phone numbers, from the data set. Pseudonymizing data involves replacing identifying information with a pseudonym, such as a unique identifier, so that the data can still be analyzed without revealing the identity of the customer.</p>
+<p><strong>How would this work practically?</strong></p>
+<ol>
+<li>
+<p>Avoid loading PII data into your data warehouse unless it is absolutely necessary. For example, maybe you don&rsquo;t need to ETL the account information table from your billing system that contains names, addresses, phone numbers, credit card and billing information.</p>
+</li>
+<li>
+<p>Separate the collection of app events and user attributes if you use a CDP platform such as Rudderstack or Segment. This would allow you to have greater control over the data being sent to your downstream integration tools and avoid unnecessary PII data. You can do this by creating two sources in the CDP platforms or by actively filtering out the data sent and removing PII data.</p>
+</li>
+<li>
+<p>ETL your data in your RAW database and limit the access to a very few people. Anonymize the data in your ANALYTICS database, so people can play with this data upstream. The dbt-privacy package provides hash and mask functions that can be used to easily handle personal data.</p>
+</li>
+</ol>
+<h3 id="implement-access-controls-to-limit-who-can-view-and-handle-sensitive-data">Implement access controls to limit who can view and handle sensitive data</h3>
+<p>If all the data in the database ANALYTICS is anonymized and if the RAW database has restricted access, we are already in good shape. Another solution would be to split the RAW database into two databases RAW and VAULT, the VAULT table containing only the sensitive PII data.</p>
+<h3 id="be-mindful-about-the-data-shared-with-3rd-partytools">Be mindful about the data shared with 3rd party tools</h3>
+<p>In today&rsquo;s digital landscape, companies have access to a wide array of tools. A survey conducted by the analytics firm Segment in 2021 found that the average number of tools used in a modern data stack is around 6–8. Similarly, a survey by the marketing technology company ChiefMartec in the same year reported that companies use an average of 23 martech tools, although this can vary depending on the organization&rsquo;s size and needs. Given the variety of tools available, it&rsquo;s critical for companies to have a clear understanding of which tools are accessing which types of data.</p>
+<blockquote>
+<p>The average number of tools used in a modern data stack is around 6–8.</p>
+</blockquote>
+<p>When using Google Tag Manager (GTM) to track events such as app behavior, signups, and purchases, along with Google Analytics to track website visits and Google Ads to monitor ad performance, Google is able to obtain a wealth of information about a customer. Google can leverage this data to improve ad performance for other businesses as well.</p>
+<p>For instance, as a customer, if you&rsquo;ve purchased a lot of pregnancy-related products from one company, Google Ads may use this information to target you with ads for newborn products in the future.</p>
+<p>There are workarounds that can help limit the amount of data shared with ad platforms. It&rsquo;s important to experiment with these recommendations and assess their impact on ad performance to ensure that the right balance is struck between data privacy and effective advertising.</p>
+<p><strong>Guidelines for Google and other ad platforms:</strong></p>
+<ol>
+<li>
+<p>Avoid using GTM to track app events and purchases.</p>
+</li>
+<li>
+<p>Send the minimum data required to optimized algorithms in ad platforms such as sign-ups and purchases. If possible, try to attach a bucket value for the customer instead of the true dollar value of a customer.</p>
+</li>
+<li>
+<p>Analyze the ideal personas of customers and describe the audience in Google and Meta instead of sending them our customer list and relying on them to do the analysis.</p>
+</li>
+</ol>
+<p><strong>Guidelines for other third-party tools:</strong></p>
+<ol>
+<li>
+<p>Send anonymized data to analytics, finance and third-party tools (Amplitude, Mixpanel).</p>
+</li>
+<li>
+<p>Send the minimum PII data needed for Support and Marketing teams to operate.</p>
+</li>
+</ol>
+<hr>
+<h2 id="closing-thoughts">Closing thoughts</h2>
+<p>Protecting sensitive customer data is an essential responsibility for analytics engineers in today&rsquo;s digital age. As we have explored in this article, there are various types of customer data that require special attention to ensure privacy protection.</p>
+<p>By implementing best practices, such as data minimization, anonymization, and access controls, analytics engineers can ensure that customer data is handled responsibly and ethically. Additionally, providing adequate training to employees who handle personal data and establishing clear processes for conducting privacy audits and reporting data breaches can help mitigate potential privacy risks.</p>
+<p>Protecting sensitive customer data is not only a legal and ethical responsibility, but it is also key in maintaining customer trust and ensuring the long-term success of a business. By prioritizing data privacy and implementing best practices, analytics engineers can play a critical role in protecting customer data and upholding the integrity of their organizations.</p>
+<p><strong>Thanks for reading!</strong></p>
+<p>Connect on <a href="https://twitter.com/oceanevelon">Twitter!</a></p>
+<p>Connect on <a href="https://www.linkedin.com/in/oceanevelon/">LinkedIn!</a></p>
+
+    </div>
+  </article>
+
+  
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
+

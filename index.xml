@@ -6,7 +6,17 @@
     <description>Recent content on Oceane&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 13 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How can Analytics Engineers protect customer data?</title>
+      <link>/data-privacy/</link>
+      <pubDate>Sat, 13 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/data-privacy/</guid>
+      <description>In today&amp;rsquo;s increasingly digital world, customer privacy has become a critical concern for businesses of all sizes. With the rise of data breaches, identity theft, and online tracking, customers are more aware than ever of the importance of protecting their personal information. As analytics engineers, we play a key role in ensuring that our companies are handling customer data responsibly and ethically.
+ It is new-thinking. She says anonymity is the new celebrity.</description>
+    </item>
+    
     <item>
       <title>Tools for blogging - less is more</title>
       <link>/blogging/</link>
@@ -64,11 +74,11 @@ A neural network is a stack of hidden layers. Each layer is composed of linear a
       <pubDate>Tue, 26 Mar 2019 08:47:11 +0100</pubDate>
       
       <guid>/about/</guid>
-      <description>Hi,
-I am Oceane. This is my simple blog where I am sharing a lot of what I am doing: data analytics, data engineering, machine learning, deep learning, finance, investment and trading! That&amp;rsquo;s a lot of data!
+      <description>Hi 👋
+I am Oceane. This is my simple blog where I am sharing a lot of what I am doing: data analytics, data engineering, data for growth!
 I hope that you will find something useful for you ☺️ !
 Stay tuned!
-Email me at oceane.velon@gmail.com</description>
+Email me at oceane@manydata.co</description>
     </item>
     
   </channel>
